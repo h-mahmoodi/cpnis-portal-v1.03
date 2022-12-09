@@ -57,11 +57,11 @@
                                             @endif
 
                                         </a>
-                                        <a class="cursor-pointer" wire:click="delete({{$item->id}})">
+                                        {{-- <a class="cursor-pointer" wire:click="delete({{$item->id}})">
                                             <span class="bg-red-800 text-slate-200 py-2 px-4   rounded-lg text-slate-200">
                                                 Delete
                                             </span>
-                                        </a>
+                                        </a> --}}
                                     </div>
                                 </td>
 

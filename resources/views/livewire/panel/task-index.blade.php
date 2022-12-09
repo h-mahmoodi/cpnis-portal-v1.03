@@ -33,7 +33,17 @@
                      wire:click="filterByUser({{$user->id}})">
                         <div class="flex flex-col items-center ">
                             <div class="text-lg font-semibold uppercase">{{$user->name}}</div>
-                            <div class="text-xs text-slate-500">{{$user->role}}</div>
+                            <div class="text-xs text-slate-500">
+                                <span class="">
+                                    @if (auth()->user()->role==2)
+                                        Super Admin
+                                    @elseif (auth()->user()->role==1)
+                                        Admin
+                                    @elseif (auth()->user()->role==0)
+                                        Normal User
+                                    @endif
+                                </span>
+                            </div>
                             <div class="text-xs text-slate-500">{{$user->email}}</div>
                         </div>
                         <div class="w-full h-0.5 bg-slate-600"></div>
