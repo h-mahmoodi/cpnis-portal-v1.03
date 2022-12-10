@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
     <script src="{{ asset('js/app.js') }}" defer></script>
-    <title>CPNIS Working Portal</title>
+    <title>CPNIS Portal Version 1.3</title>
     <link rel="shortcut icon" href="{{ asset('images/cpnis-logo.png') }}">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
@@ -110,11 +110,11 @@
 
 
 @if (auth()->user())
-    <div class=" ">
+    <div class="">
         @include('layouts.header')
     </div>
 @endif
-    <div class="p-2 min-h-screen" style="animation: mymove 15s infinite;background-image: url('images/bg.svg');background-size: contain;">
+    <div class="p-2" style="animation: mymove 15s infinite;background-image: url('images/bg.svg');background-size: contain;">
         @yield('content')
 
     </div>
