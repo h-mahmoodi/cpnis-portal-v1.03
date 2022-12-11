@@ -18,7 +18,7 @@ class CreateMessagesTable extends Migration
             $table->integer('group_id')->nullable();
             $table->unsignedInteger('from')->nullable();
             $table->unsignedInteger('to')->nullable();
-            $table->string('body');
+            $table->text('body');
 
 
 

@@ -5,6 +5,7 @@ use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\DocumentTypeController;
 use App\Http\Controllers\EmailController;
 use App\Http\Controllers\LogController;
+use App\Http\Controllers\MessageController;
 use App\Http\Controllers\NotifyController;
 use App\Http\Controllers\ReminderController;
 use App\Http\Controllers\SiteController;
@@ -119,6 +120,10 @@ Route::prefix('/')->middleware(['auth'])->group(function(){
         Route::get('/profile',[UserController::class,'profile'])->name('user.profile');
         Route::post('/profile/change-password',[UserController::class,'changePassword'])->name('user.profile.changepassword');
     });
+
+
+    Route::get('/message',[MessageController::class,'index'])->name('message.index');
+
 
 });
 
