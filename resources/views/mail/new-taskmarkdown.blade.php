@@ -186,6 +186,12 @@ Thanks,<br>
 
     <hr>
     <div style="font-weight: 700;font-family: 'Cabin', Arial, 'Helvetica Neue', Helvetica, sans-serif;">
+        Created at :
+    </div>
+    <div>
+        {{$task->created_at}}
+    </div>
+    <div style="font-weight: 700;font-family: 'Cabin', Arial, 'Helvetica Neue', Helvetica, sans-serif;">
         Task Title :
     </div>
     <div>

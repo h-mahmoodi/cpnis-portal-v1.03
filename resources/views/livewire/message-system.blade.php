@@ -15,7 +15,7 @@
                         <div class="px-1 py-2 rounded-md bg-slate-800 text-slate-100">
                         Your Messages With {{$selectedUser->name}}
                         </div>
-                        <div class="h-[300px] bg-slate-300 p-2 rounded-md overflow-y-scroll">
+                        <div class="h-[300px] bg-slate-300 p-2 rounded-md overflow-y-scroll flex flex-col-reverse">
                             <div class="">
                                 @foreach ($userMessages as $userMessage)
                                 @if ($userMessage->from==auth()->id())
@@ -48,9 +48,9 @@
                             </div>
                         </div>
                         <div class="flex w-full gap-3 px-2 py-2 ">
-                            <input wire:model.lazy="messageBox" type="text" class="w-full px-2 py-1 rounded-md" placeholder="Type Your Message ... ">
-                            <button wire:click="sendMessage" class="p-2 rounded-md bg-slate-800 text-slate-100">Send</button>
-                            <button wire:click="setMessages" wire:poll.8000ms='setMessages' class="p-2 rounded-md bg-slate-800 text-slate-100">Refresh</button>
+                            <input wire:model.lazy="messageBox" wire:keydown.enter="sendMessage" type="text" class="w-full px-2 py-1 rounded-md" placeholder="Type Your Message ... ">
+                            <button wire:click="sendMessage"  class="p-2 rounded-md bg-slate-800 text-slate-100">Send</button>
+                            <button wire:click="setMessages" wire:poll.6000ms='setMessages' class="p-2 rounded-md bg-slate-800 text-slate-100">Refresh</button>
                         </div>
                     </div>
                 @else

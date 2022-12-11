@@ -53,7 +53,7 @@
               >
                 Log in
               </button>
-              <a href="/register" class="block w-full p-3 bg-gray-900 text-white rounded-md" >Create New Account</a>
+              {{-- <a href="/register" class="block w-full p-3 bg-gray-900 text-white rounded-md" >Create New Account</a> --}}
 
               {{-- <a class="text-gray-500" href="#!">Forgot password?</a> --}}
             </div>

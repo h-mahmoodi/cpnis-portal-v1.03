@@ -23,7 +23,7 @@ class MessageSystem extends Component
         $this->userMessages=Message::where('from',Auth::id())
         ->where('to',$this->selectedUser->id)
         ->orWhere('from',$this->selectedUser->id)
-        ->where('to',Auth::id())->orderByDesc('id')
+        ->where('to',Auth::id())
         ->get();
     }
 

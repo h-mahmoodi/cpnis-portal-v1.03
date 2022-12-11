@@ -132,17 +132,17 @@
 
         <li class="p-1 nav-item">
             <a class="relative nav-link flex justify-center items-center gap-2 text-slate-300  hover:scale-95 py-2 px-4 rounded-md transition-all duration-200
-              @if (Request::routeIs('activities.*'))
+              @if (Request::routeIs('message.*'))
               bg-red-800 font-semibold
               @else
               bg-slate-800
              @endif
-            " href="{{route('activities.index')}}">
+            " href="{{route('message.index')}}">
                 <i class="text-xl fa-solid fa-comments"></i>
                 <span class="text-lg ">  Messages </span>
-                @if ($userActivitiesCount>0)
+                {{-- @if ($userActivitiesCount>0)
                     <span class="absolute px-2 bg-red-800 rounded-full -top-2 -right-2 text-slate-200">{{$userActivitiesCount}}</span>
-                @endif
+                @endif --}}
             </a>
         </li>
 

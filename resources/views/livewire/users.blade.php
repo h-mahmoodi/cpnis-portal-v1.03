@@ -12,8 +12,6 @@
                                 <th class="p-3">id</th>
                                 <th class="p-3">Name</th>
                                 <th class="p-3">Email</th>
-                                <th class="p-3">Role</th>
-                                <th class="p-3">Status</th>
                                 <th class="p-3"></th>
 
                               </tr>
@@ -24,8 +22,7 @@
                                 <td class="p-3">{{$item->id}}</td>
                                 <td class="p-3">{{$item->name}}</td>
                                 <td class="p-3">{{$item->email}}</td>
-                                <td class="p-3">{{$item->role}}</td>
-                                <td class="p-3">{{$item->status}}</td>
+
                                 <td class="p-3">
                                     <div class="flex gap-2">
                                         <a  class="cursor-pointer"  wire:click="changeRole({{$item}})">

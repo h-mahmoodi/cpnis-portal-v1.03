@@ -191,24 +191,7 @@ Thanks,<br>
     </td>
     </tr>
     </tbody></table>
-    <table border="0" cellpadding="0" cellspacing="0" class="button_block block-6" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%">
-    <tbody><tr>
-    <td class="pad" style="padding-bottom:15px;padding-left:5px;padding-right:5px;padding-top:25px;text-align:center;">
-    <div align="center" class="alignment">
-    <!--[if mso]><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="example.com" style="height:38px;width:146px;v-text-anchor:middle;" arcsize="0%" stroke="false" fillcolor="#4042e2"><w:anchorlock/><v:textbox inset="0px,0px,0px,0px"><center style="color:#ffffff; font-family:Arial, sans-serif; font-size:14px"><![endif]--><a href="example.com" style="text-decoration:none;display:inline-block;color:#ffffff;background-color:#4042e2;border-radius:0px;width:auto;border-top:0px solid #8a3b8f;font-weight:400;border-right:0px solid #8a3b8f;border-bottom:0px solid #8a3b8f;border-left:0px solid #8a3b8f;padding-top:5px;padding-bottom:5px;font-family:Cabin, Arial, Helvetica Neue, Helvetica, sans-serif;font-size:14px;text-align:center;mso-border-alt:none;word-break:keep-all;" target="_blank"><span style="padding-left:35px;padding-right:35px;font-size:14px;display:inline-block;letter-spacing:1px;"><span dir="ltr" style="word-break: break-word;"><span data-mce-style="" dir="ltr" style="line-height: 28px;"><strong>Learn More</strong></span></span></span></a>
-    <!--[if mso]></center></v:textbox></v:roundrect><![endif]-->
-    </div>
-    </td>
-    </tr>
-    </tbody></table>
-    </td>
-    </tr>
-    </tbody>
-    </table>
-    </td>
-    </tr>
-    </tbody>
-    </table>
+
     <table align="center" border="0" cellpadding="0" cellspacing="0" class="row row-5" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%">
     <tbody>
     <tr>
