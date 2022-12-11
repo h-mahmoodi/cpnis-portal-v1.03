@@ -2,29 +2,30 @@
 
 namespace App\Mail;
 
+use App\Models\Activity;
 use App\Models\Task;
+use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class NewTaskCreated extends Mailable
+class NewActivityMarkdownMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    protected $task;
+    public $task,$activity;
+
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct(Task $task)
+    public function __construct(Task $task,Activity $activity)
     {
-
+        $this->activity=$activity;
         $this->task=$task;
-
-        // dd($this->task);
     }
 
     /**
@@ -34,10 +35,9 @@ class NewTaskCreated extends Mailable
      */
     public function build()
     {
-        // return view('mail.new-task');
-
-        return $this->from('noreply@cplogmein.com', 'noreply_New Task')
-        ->markdown('mail.new-task', [
+        return $this->from('noreply@cplogmein.com','CPNIS Portal | New Activity')
+        ->markdown('mail.new-Activitymarkdown',[
+            'activity' => $this->activity,
             'task' => $this->task,
         ]);
     }

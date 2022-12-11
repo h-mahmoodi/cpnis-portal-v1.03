@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Jobs\SendEmail;
 use App\Mail\NewActivity;
+use App\Mail\NewActivityMarkdownMail;
 use App\Mail\NewTaskCreated;
+use App\Mail\NewTaskMarkdownMail;
 use App\Models\Activity;
 use App\Models\Task;
 use App\Models\Log;
@@ -148,9 +150,12 @@ class TaskController extends Controller
 
 
         try{
-        Mail::to(User::find($task->getTeams->pluck('user_id')))->send(new NewTaskCreated);
-        Mail::to(User::find($task->worker_id))
-        ->send(new NewActivity($activity->id,$activity->sender_id,$activity->worker_id));
+            Mail::to(User::find($task->getTeams->pluck('user_id')))
+            ->queue(new NewTaskMarkdownMail($task));
+
+        // Mail::to(User::find($task->getTeams->pluck('user_id')))->queue(new NewTaskCreated($task));
+            Mail::to(User::find($task->worker_id))
+            ->queue(new NewActivityMarkdownMail($task,$activity));
         }
         catch(Throwable $e){
             // dd($e);

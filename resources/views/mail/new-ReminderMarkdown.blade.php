@@ -1,3 +1,22 @@
+{{-- @component('mail::message')
+# Introduction
+
+
+
+@component('mail::button', ['url' => ''])
+Button Text
+@endcomponent
+
+Thanks,<br>
+{{ config('app.name') }}
+@endcomponent --}}
+
+
+{{-- <div>
+    {{$task}}
+</div> --}}
+
+
 <!DOCTYPE html>
 <html lang="en" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:v="urn:schemas-microsoft-com:vml"><head>
     <title></title>
@@ -155,7 +174,7 @@
     <table border="0" cellpadding="5" cellspacing="0" class="heading_block block-3" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%">
     <tbody><tr>
     <td class="pad">
-    <h1 style="margin: 0; color: #2f2e41; direction: ltr; font-family: 'Cabin', Arial, 'Helvetica Neue', Helvetica, sans-serif; font-size: 24px; font-weight: 400; letter-spacing: 1px; line-height: 120%; text-align: left; margin-top: 0; margin-bottom: 0;"><span class="tinyMce-placeholder">New TeamGroup Created</span></h1>
+    <h1 style="margin: 0; color: #2f2e41; direction: ltr; font-family: 'Cabin', Arial, 'Helvetica Neue', Helvetica, sans-serif; font-size: 24px; font-weight: 400; letter-spacing: 1px; line-height: 120%; text-align: left; margin-top: 0; margin-bottom: 0;"><span class="tinyMce-placeholder">New Reminder Alert</span></h1>
     </td>
     </tr>
     </tbody></table>
@@ -163,9 +182,12 @@
     <tbody><tr>
     <td class="pad" style="padding-left:5px;padding-right:5px;padding-top:10px;">
     <div style="color:#393d47;direction:ltr;font-family:Cabin, Arial, Helvetica Neue, Helvetica, sans-serif;font-size:15px;font-weight:400;letter-spacing:0px;line-height:150%;text-align:left;mso-line-height-alt:22.5px;">
-    <p style="margin: 0;">Please be informed that new task #{{$task->id}} is assigned by {{$task->getCreator->name}} to {{$task->getWorker->name}} as main case processor.</p>
 
-    </div>
+    <p style="margin: 0;">This is your Reminder . #{{$reminder->id}}.
+    </p>
+    <p style="margin: 0;">Reminder Description : {{$reminder->body}}.
+    </p>
+
     </td>
     </tr>
     </tbody></table>

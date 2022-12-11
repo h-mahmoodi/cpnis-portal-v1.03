@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'CPNIS Portal'),
+    'name' => env('APP_NAME', 'CPNISPortal'),
 
     /*
     |--------------------------------------------------------------------------

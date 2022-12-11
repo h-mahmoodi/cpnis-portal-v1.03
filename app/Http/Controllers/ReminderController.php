@@ -8,6 +8,7 @@ use App\Models\Reminder;
 use App\Models\Task;
 use App\Models\User;
 use App\Notifications\RemindmeNotification;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Queue\Jobs\Job;
 use Illuminate\Support\Facades\Auth;
@@ -62,6 +63,8 @@ class ReminderController extends Controller
         //     return redirect()->back();
         // }
 
+        // dd(Carbon::createFromTimestamp($request->reminder_date));
+        // dd(now()->toDateTime()==$request->reminder_date);
 
         $validated=$request->validate([
             'user_id'  => 'required',

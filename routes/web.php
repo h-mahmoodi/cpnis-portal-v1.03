@@ -114,6 +114,8 @@ Route::prefix('/')->middleware(['auth'])->group(function(){
 
     Route::prefix('users')->middleware(['auth'])->group(function(){
         Route::get('/',[UserController::class,'index'])->name('users.index');
+        Route::get('/add-user',[UserController::class,'addUser'])->name('users.add');
+        Route::post('/store-user',[UserController::class,'storeUser'])->name('users.store');
         Route::get('/profile',[UserController::class,'profile'])->name('user.profile');
         Route::post('/profile/change-password',[UserController::class,'changePassword'])->name('user.profile.changepassword');
     });

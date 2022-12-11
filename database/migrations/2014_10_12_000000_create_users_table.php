@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->tinyInteger('role')->default(0)->comment('0=>user,1=>Admin,2=>owner');
             $table->tinyInteger('status')->default(1)->comment('0=>deactive,1=>active');
+            $table->tinyInteger('is_online')->default(0)->comment('0=>offline,1=>online');
             $table->rememberToken();
             $table->timestamps();
         });

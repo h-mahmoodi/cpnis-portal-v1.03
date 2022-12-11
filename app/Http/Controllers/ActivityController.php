@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Notify;
 use App\Models\Activity;
 use App\Mail\NewActivity;
+use App\Mail\NewActivityMarkdownMail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
@@ -343,8 +344,10 @@ class ActivityController extends Controller
 
 
         try{
+            // Mail::to(User::find($task->worker_id))
+            // ->send(new NewActivity($activity->id,$activity->sender_id,$activity->worker_id));
             Mail::to(User::find($task->worker_id))
-            ->send(new NewActivity($activity->id,$activity->sender_id,$activity->worker_id));
+            ->queue(new NewActivityMarkdownMail($task,$activity));
             }
             catch(Throwable $e){
                 // dd($e);

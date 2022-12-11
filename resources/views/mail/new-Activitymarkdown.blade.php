@@ -1,3 +1,22 @@
+{{-- @component('mail::message')
+# Introduction
+
+
+
+@component('mail::button', ['url' => ''])
+Button Text
+@endcomponent
+
+Thanks,<br>
+{{ config('app.name') }}
+@endcomponent --}}
+
+
+{{-- <div>
+    {{$task}}
+</div> --}}
+
+
 <!DOCTYPE html>
 <html lang="en" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:v="urn:schemas-microsoft-com:vml"><head>
     <title></title>
@@ -120,7 +139,7 @@
     <table align="center" border="0" cellpadding="0" cellspacing="0" class="row-content stack" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-size: auto; background-color: #6295fe; color: #000000; width: 680px;" width="680">
     <tbody>
     <tr>
-    <td class="column column-1" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; padding-left: 25px; padding-right: 25px; vertical-align: top; padding-top: 20px; padding-bottom: 10px; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px;" width="100%">
+    <td class="column column-1" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; padding-left: 25px; padding-right: 25px; vertical-align: top; padding-top: 10px; padding-bottom: 10px; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px;" width="100%">
     <table border="0" cellpadding="5" cellspacing="0" class="heading_block block-1" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%">
     <tbody><tr>
     <td class="pad">
@@ -155,7 +174,7 @@
     <table border="0" cellpadding="5" cellspacing="0" class="heading_block block-3" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%">
     <tbody><tr>
     <td class="pad">
-    <h1 style="margin: 0; color: #2f2e41; direction: ltr; font-family: 'Cabin', Arial, 'Helvetica Neue', Helvetica, sans-serif; font-size: 24px; font-weight: 400; letter-spacing: 1px; line-height: 120%; text-align: left; margin-top: 0; margin-bottom: 0;"><span class="tinyMce-placeholder">New TeamGroup Created</span></h1>
+    <h1 style="margin: 0; color: #2f2e41; direction: ltr; font-family: 'Cabin', Arial, 'Helvetica Neue', Helvetica, sans-serif; font-size: 24px; font-weight: 400; letter-spacing: 1px; line-height: 120%; text-align: left; margin-top: 0; margin-bottom: 0;"><span class="tinyMce-placeholder">New Activity Created</span></h1>
     </td>
     </tr>
     </tbody></table>
@@ -163,22 +182,28 @@
     <tbody><tr>
     <td class="pad" style="padding-left:5px;padding-right:5px;padding-top:10px;">
     <div style="color:#393d47;direction:ltr;font-family:Cabin, Arial, Helvetica Neue, Helvetica, sans-serif;font-size:15px;font-weight:400;letter-spacing:0px;line-height:150%;text-align:left;mso-line-height-alt:22.5px;">
-    <p style="margin: 0;">Please be informed that new task #{{$task->id}} is assigned by {{$task->getCreator->name}} to {{$task->getWorker->name}} as main case processor.</p>
 
-    </div>
+    <p style="margin: 0;">{{$activity->getSender->name}} Assigned a New Activity #{{$activity->id}} On Task #{{$task->id}} for you.
+        Please do the needful ASAP.</p>
+
+        <hr>
+        <div style="font-weight: 700;font-family: 'Cabin', Arial, 'Helvetica Neue', Helvetica, sans-serif;">
+            Task Title :
+        </div>
+        <div>
+            {{$task->title}}
+        </div>
+        <div style="font-weight: 700;font-family: 'Cabin', Arial, 'Helvetica Neue', Helvetica, sans-serif;">
+            Activity Details :
+        </div>
+        <div>
+            {{$activity->description}}
+        </div>
+
     </td>
     </tr>
     </tbody></table>
-    <table border="0" cellpadding="0" cellspacing="0" class="button_block block-6" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%">
-    <tbody><tr>
-    <td class="pad" style="padding-bottom:15px;padding-left:5px;padding-right:5px;padding-top:25px;text-align:center;">
-    <div align="center" class="alignment">
-    <!--[if mso]><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="example.com" style="height:38px;width:146px;v-text-anchor:middle;" arcsize="0%" stroke="false" fillcolor="#4042e2"><w:anchorlock/><v:textbox inset="0px,0px,0px,0px"><center style="color:#ffffff; font-family:Arial, sans-serif; font-size:14px"><![endif]--><a href="example.com" style="text-decoration:none;display:inline-block;color:#ffffff;background-color:#4042e2;border-radius:0px;width:auto;border-top:0px solid #8a3b8f;font-weight:400;border-right:0px solid #8a3b8f;border-bottom:0px solid #8a3b8f;border-left:0px solid #8a3b8f;padding-top:5px;padding-bottom:5px;font-family:Cabin, Arial, Helvetica Neue, Helvetica, sans-serif;font-size:14px;text-align:center;mso-border-alt:none;word-break:keep-all;" target="_blank"><span style="padding-left:35px;padding-right:35px;font-size:14px;display:inline-block;letter-spacing:1px;"><span dir="ltr" style="word-break: break-word;"><span data-mce-style="" dir="ltr" style="line-height: 28px;"><strong>Learn More</strong></span></span></span></a>
-    <!--[if mso]></center></v:textbox></v:roundrect><![endif]-->
-    </div>
-    </td>
-    </tr>
-    </tbody></table>
+
     </td>
     </tr>
     </tbody>

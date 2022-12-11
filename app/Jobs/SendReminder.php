@@ -3,6 +3,7 @@
 namespace App\Jobs;
 
 use App\Mail\NewActivity;
+use App\Mail\NewReminderMarkdown;
 use App\Mail\ReminderMail;
 use App\Models\Activity;
 use App\Models\Reminder;
@@ -23,6 +24,8 @@ class SendReminder implements ShouldQueue
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     public $activity,$msg;
+
+    public $reminders;
     /**
      * Create a new job instance.
      *
@@ -31,6 +34,7 @@ class SendReminder implements ShouldQueue
 
     public function __construct()
     {
+        $this->reminders=Reminder::whereDate('reminder_date',now()->format('Y/m/d'))->where('status',0)->get();
     }
 
     /**
@@ -43,18 +47,19 @@ class SendReminder implements ShouldQueue
         // $user=User::findOrFail($this->activity->worker_id);
         // Notification::sendNow($user,new NewActivityNotification($this->activity,$this->msg));
 
-        $admins=User::where('role','!=',0)->get();
-        $reminders=Reminder::whereDate('reminder_date',now()->format('Y/m/d'))->where('status',0)->get();
+        // $admins=User::where('role','!=',0)->get();
+        // $reminders=Reminder::whereDate('reminder_date',now()->format('Y/m/d'))->where('status',0)->get();
 
 
-        foreach($reminders as $reminder){
+
+        foreach($this->reminders as $reminder){
             $user=User::find($reminder->user_id);
-            Mail::to($user->email)->queue(new ReminderMail($reminder));
+            Mail::to($user)->queue(new NewReminderMarkdown($reminder));
             $reminder->status=1;
             $reminder->update();
-            foreach($admins as $admin){
-                Mail::to($admin->email)->queue(new ReminderMail($reminder));
-            };
+            // foreach($admins as $admin){
+            //     Mail::to($admin->email)->queue(new NewReminderMarkdown($reminder));
+            // };
         };
 
         // $user=User::findOrFail($this->activity->worker_id);

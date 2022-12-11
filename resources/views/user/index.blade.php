@@ -19,7 +19,7 @@
             >
             <span>Invitation Code</span>
         </a>
-            <a href="{{route('tasks.types.create')}}"
+            <a href="{{route('users.add')}}"
             class="flex items-center gap-2 px-6 py-4 text-base font-medium leading-tight uppercase transition-all duration-200 bg-blue-900 text-slate-300 rounded-md hover:scale-95 "
             >
             <i class="fas fa-plus"></i>

@@ -8,11 +8,11 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class NewTaskCreated extends Mailable
+class NewTaskMarkdownMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    protected $task;
+    public $task;
 
     /**
      * Create a new message instance.
@@ -34,11 +34,7 @@ class NewTaskCreated extends Mailable
      */
     public function build()
     {
-        // return view('mail.new-task');
-
-        return $this->from('noreply@cplogmein.com', 'noreply_New Task')
-        ->markdown('mail.new-task', [
-            'task' => $this->task,
-        ]);
+        return $this->from('noreply@cplogmein.com','CPNIS Portal | New Task Group')
+        ->markdown('mail.new-taskmarkdown',['task'=>$this->task]);
     }
 }

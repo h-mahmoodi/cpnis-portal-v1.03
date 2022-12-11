@@ -38,4 +38,23 @@ class UserController extends Controller
         Alert::toast('Your Password Changed', 'success');
         return back();
     }
+
+    public function addUser(){
+        return view('user.add-user');
+    }
+
+    public function storeUser(Request $request){
+        $validated=$request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
+
+        $user=New User();
+        $user->name=$request->name;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
+        $user->save();
+        return redirect()->route('users.index');
+    }
 }
