@@ -109,7 +109,7 @@
                 <i class="text-xl fas fa-code-fork"></i>
                 <span class="text-lg ">  Tasks </span>
                 @if ($userTasksCount>0)
-                    <span class="absolute px-2 bg-red-800 rounded-full -top-2 -right-2 text-slate-200">{{$userTasksCount}}</span>
+                    <span class="absolute px-2 bg-red-900 rounded-full -top-2 -right-2 text-slate-200">{{$userTasksCount}}</span>
                 @endif
             </a>
         </li>
@@ -125,7 +125,7 @@
                 <i class="text-xl fa-solid fa-code-pull-request"></i>
                 <span class="text-lg ">  Activities </span>
                 @if ($userActivitiesCount>0)
-                    <span class="absolute px-2 bg-red-800 rounded-full -top-2 -right-2 text-slate-200">{{$userActivitiesCount}}</span>
+                    <span class="absolute px-2 bg-red-900 rounded-full -top-2 -right-2 text-slate-200">{{$userActivitiesCount}}</span>
                 @endif
             </a>
         </li>
@@ -140,9 +140,9 @@
             " href="{{route('message.index')}}">
                 <i class="text-xl fa-solid fa-comments"></i>
                 <span class="text-lg ">  Messages </span>
-                {{-- @if ($userActivitiesCount>0)
-                    <span class="absolute px-2 bg-red-800 rounded-full -top-2 -right-2 text-slate-200">{{$userActivitiesCount}}</span>
-                @endif --}}
+                @if ($userMessagesCount>0)
+                    <span class="absolute px-2 bg-red-800 rounded-full -top-2 -right-2 text-slate-200">{{$userMessagesCount}}</span>
+                @endif
             </a>
         </li>
 
@@ -158,7 +158,7 @@
                 <i class="text-xl fa-solid fa-bell"></i>
                 <span class="text-lg ">  Reminders </span>
                 @if ($userRemindersCount>0)
-                <span class="absolute px-2 bg-red-800 rounded-full -top-2 -right-2 text-slate-200">{{$userRemindersCount}}</span>
+                <span class="absolute px-2 bg-red-900 rounded-full -top-2 -right-2 text-slate-200">{{$userRemindersCount}}</span>
                 @endif
             </a>
         </li>

@@ -67,7 +67,7 @@
                         <div class="flex p-1 text-xs text-slate-300">User Email : {{auth()->user()->email}}</div>
                     </div>
                     <div class="w-full h-1 my-2 rounded-md bg-slate-600"></div>
-                    <div class="grid w-full grid-cols-2 gap-3 md:grid-cols-2">
+                    <div class="grid w-full grid-cols-2 gap-3 py-1 md:grid-cols-2">
 
                         <div class="flex items-center gap-3 p-2 text-xl rounded-md bg-slate-200" >
                                 <div class="p-1 px-2 py-1 text-lg rounded-md bg-slate-900">{{count(auth()->user()->getTeams)}} </div>
@@ -95,7 +95,7 @@
                     {{-- <i class="p-2 text-5xl fa-regular fa-bell bg-violet-600 rounded-xl"></i> --}}
                     <div class="flex flex-col justify-between w-full gap-2 md:flex-row">
                         <div class="flex items-center gap-2 font-semibold">
-                            <span class="px-4 py-2 rounded-md  bg-violet-900 text-slate-200">{{$userRemindersCount}} </span>
+                            <span class="px-4 py-2 rounded-md bg-violet-900 text-slate-200">{{$userRemindersCount}} </span>
                             <span> My Reminders</span>
                         </div>
                         <div class="flex">
@@ -140,7 +140,7 @@
                     $('.owl-carousel.owl-reminders').owlCarousel({
                         loop:true,
                         margin:10,
-                        nav:true,
+                        nav:false,
                         responsive:{
                             0:{
                                 items:1
@@ -162,11 +162,11 @@
 
 
         <div class="w-full p-3 rounded-md bg-slate-900 ">
-            <div class="flex items-center gap-3 p-2 my-1 text-xl  text-slate-300">
+            <div class="flex items-center gap-3 p-2 my-1 text-xl text-slate-300">
                 {{-- <i class="p-2 text-5xl bg-blue-800 fas fa-code-fork rounded-xl"></i> --}}
-                <div class="flex flex-col justify-between w-full gap-2  md:flex-row">
+                <div class="flex flex-col justify-between w-full gap-2 md:flex-row">
                     <div class="flex items-center gap-2 font-semibold">
-                        <span class="px-4 py-2 bg-blue-800 rounded-md  text-slate-200">{{$userTasksCount}} </span>
+                        <span class="px-4 py-2 bg-blue-800 rounded-md text-slate-200">{{$userTasksCount}} </span>
                        <span class="text-xl">My Tasks</span>
                     </div>
                     <div class="flex gap-3">
@@ -195,7 +195,7 @@
                         <div class="px-2 py-1 text-slate-200">
                             Task #{{$task->id}}
                         </div>
-                        <div href="{{route('tasks.show',$task->id)}}" class="flex flex-col gap-2 p-2 text-white duration-200 bg-white rounded-md  hover:scale-95">
+                        <div href="{{route('tasks.show',$task->id)}}" class="flex flex-col gap-2 p-2 text-white duration-200 bg-white rounded-md hover:scale-95">
 
                             <div class="flex flex-col ">
                                <div class="flex w-full gap-1">
@@ -216,20 +216,20 @@
                                        <div>
                                            @if ($task->priority==0)
                                            <a class="flex items-center justify-between gap-1 px-2 py-1 text-xl rounded-md text-slate-800 bg-slate-300 " title="Low Priority">
-                                               <i class="text-base  fa-regular fa-star"></i>
+                                               <i class="text-base fa-regular fa-star"></i>
                                                <div class="text-xs ">Low Priority</div>
                                            </a>
                                        @elseif ($task->priority==1)
                                            <a class="flex items-center justify-between gap-1 px-2 py-1 text-xl bg-orange-700 rounded-md text-slate-200" title="Normal Priority">
                                                <div class="flex">
-                                                   <i class="text-base  fa-solid fa-star-half-stroke"></i>
+                                                   <i class="text-base fa-solid fa-star-half-stroke"></i>
                                                </div>
                                                <div class="text-xs ">Normal Priority</div>
                                            </a>
                                        @elseif ($task->priority==2)
                                            <a class="flex items-center justify-between gap-1 px-2 py-1 text-xl bg-red-900 rounded-md text-slate-200" title="High Priority">
                                                <div class="flex items-center">
-                                                   <i class="text-base  fa-solid fa-star"></i>
+                                                   <i class="text-base fa-solid fa-star"></i>
                                                </div>
                                                <div class="text-xs">High Priority</div>
                                            </a>
@@ -238,17 +238,17 @@
                                        <div>
                                            @if ($task->status==2)
                                        <a class="flex items-center justify-between gap-1 px-2 py-1 rounded-md text-slate-200 bg-emerald-800 " title="Complete Tsask">
-                                           <i class="text-base  fa-solid fa-circle-check"></i>
+                                           <i class="text-base fa-solid fa-circle-check"></i>
                                            <div class="text-xs ">Complete</div>
                                        </a>
                                        @elseif ($task->status==1)
                                        <a class="flex items-center justify-between gap-1 px-2 py-1 text-xl bg-orange-700 rounded-md text-slate-200" title="Working Task">
-                                           <i class="text-base  fa-solid fa-person-digging"></i>
+                                           <i class="text-base fa-solid fa-person-digging"></i>
                                            <div class="text-xs">Working</div>
                                        </a>
                                        @elseif ($task->status==0)
                                        <a class="flex items-center justify-between gap-1 px-2 py-1 text-xl text-gray-800 rounded-md bg-slate-300 " title="Nothing">
-                                           <i class="text-base  fa-solid fa-circle-minus"></i>
+                                           <i class="text-base fa-solid fa-circle-minus"></i>
                                            <div class="text-xs">Nothing</div>
                                        </a>
                                        @endif
@@ -343,7 +343,7 @@
                 {{-- <i class="p-2 text-5xl bg-orange-600 fa-solid fa-code-pull-request rounded-xl"></i> --}}
                 <div class="flex flex-col justify-between w-full gap-2 md:flex-row">
                     <div class="flex items-center gap-2 font-semibold">
-                        <span class="px-4 py-2 bg-orange-800 rounded-md  text-slate-200">{{$userActivitiesCount}} </span>
+                        <span class="px-4 py-2 bg-orange-800 rounded-md text-slate-200">{{$userActivitiesCount}} </span>
                         <span> My Activities ToDo</span>
                     </div>
                     <div class="flex gap-3">
@@ -367,7 +367,7 @@
                         <div class="px-2 py-1 text-slate-200">
                             Activity #{{$item->id}}
                         </div>
-                        <div  class="flex flex-col gap-2 p-2 transition-all duration-200 rounded-md  text-slate-100 bg-slate-100 hover:scale-95">
+                        <div  class="flex flex-col gap-2 p-2 transition-all duration-200 rounded-md text-slate-100 bg-slate-100 hover:scale-95">
 
 
 
@@ -409,12 +409,12 @@
                                         </a>
                                     @elseif ($item->status==1)
                                         <a class="flex items-center gap-1 px-2 py-1 text-xl bg-orange-700 rounded-md text-slate-200">
-                                            <i class="text-lg  fa-solid fa-person-digging"></i>
+                                            <i class="text-lg fa-solid fa-person-digging"></i>
                                             <div class="text-xs">Working</div>
                                         </a>
                                     @elseif ($item->status==0)
                                         <a class="flex items-center gap-1 px-2 py-1 text-xl rounded-md bg-slate-300 text-slate-800">
-                                            <i class="text-base  fa-solid fa-circle-minus"></i>
+                                            <i class="text-base fa-solid fa-circle-minus"></i>
                                             <div class="text-xs ">Not Seen</div>
                                         </a>
                                     @endif

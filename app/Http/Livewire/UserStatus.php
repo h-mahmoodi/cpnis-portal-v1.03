@@ -14,7 +14,7 @@ class UserStatus extends Component
     public $userStatus;
 
     public function mount(){
-      $this->users=User::all();
+      $this->users=User::orderBy('is_online','desc')->get();
     }
 
 

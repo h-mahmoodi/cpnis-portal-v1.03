@@ -24,6 +24,11 @@ class UserStatus
             $user=User::find(Auth::user()->id);
             $user->is_online = 1;
             $user->update();
+
+            // $expiresAt = now()->addMinutes(2); /* keep online for 2 min */
+            // Cache::put('user-is-online-' . Auth::user()->id, $expiresAt);
+            // User::where('id', Auth::user()->id)->update(['updated_at' => now()]);
+
         }
         return $next($request);
     }

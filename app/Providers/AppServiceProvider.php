@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Activity;
+use App\Models\Message;
 use App\Models\Reminder;
 use App\Models\Task;
 use Illuminate\Support\Facades\Auth;
@@ -38,11 +39,15 @@ class AppServiceProvider extends ServiceProvider
             $view->with('userRemindersCount', count(Reminder::where('user_id',Auth::id())->where('status',0)->get()));
         });
 
+        View::composer('*',function($view){
+            $view->with('userMessagesCount', count(Message::where('to',Auth::id())->where('status',0)->get()));
+        });
+
 
             View::composer('*',function($view){
                 if(Auth::user()){
-                $tasks=Auth::user()->getTeams;
-                $view->with('userTasksCount' , count($tasks));
+                    $tasks=Auth::user()->getTeams;
+                    $view->with('userTasksCount' , count($tasks));
             }
             });
 

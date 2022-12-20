@@ -27,7 +27,7 @@ class Kernel extends ConsoleKernel
 
         // })->everyMinute();
 
-        $schedule->job(new SendReminder())->everyThirtyMinutes();
+        $schedule->job(new SendReminder())->everyTenMinutes();
 
 
 

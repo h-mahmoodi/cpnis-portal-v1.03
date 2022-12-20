@@ -25,8 +25,11 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/queue-work',function(){
-    Artisan::call('queue:work');
+Route::get('/schedule-run',function(){
+    Artisan::call('schedule:run');
+});
+Route::get('/schedule-work',function(){
+    Artisan::call('schedule:work');
 });
 
 Route::prefix('/')->middleware(['auth'])->group(function(){

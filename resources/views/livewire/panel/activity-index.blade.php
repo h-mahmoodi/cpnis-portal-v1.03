@@ -1,5 +1,5 @@
 <div>
-    <div class="container mx-auto bg-slate-900/80 p-2 rounded-xl ">
+    <div class="container p-2 mx-auto bg-slate-900/80 rounded-xl ">
 
 
 
@@ -7,11 +7,11 @@
 
 
         <div class="my-3">
-            <div class="text-center text-white flex items-center gap-3 bg-slate-800 p-2 rounded-xl">
+            <div class="flex items-center gap-3 p-2 text-center text-white bg-slate-800 rounded-xl">
                 <div class="flex items-center justify-center">
                   <img class="w-16" src="http://127.0.0.1:8000/images/cpnis-logo.png" alt="">
                 </div>
-                <i class="fa-solid fa-code-pull-request text-4xl "></i>
+                <i class="text-4xl fa-solid fa-code-pull-request "></i>
                 <h2 class="text-3xl font-semibold">Activities Managment</h2>
             </div>
         </div>
@@ -20,14 +20,14 @@
 
 {{--
         @if (auth()->user()->role != 0)
-            <div  class="w-full grid grid-cols-1 md:grid-cols-3 gap-5 bg-slate-600 p-3 rounded-xl my-5">
+            <div  class="grid w-full grid-cols-1 gap-5 p-3 my-5 md:grid-cols-3 bg-slate-600 rounded-xl">
                 @foreach ($users as $user)
-                    <div class="flex items-center justify-between gap-1 text-slate-200 bg-slate-900 rounded-xl py-2 px-4">
+                    <div class="flex items-center justify-between gap-1 px-4 py-2 text-slate-200 bg-slate-900 rounded-xl">
                         <div class="flex flex-col items-start ">
                             <div class="text-2xl font-semibold ">{{$user->name}}</div>
-                            <div class="w-40 text-xs font-semibold text-slate-500 break-words">{{$user->email}}</div>
+                            <div class="w-40 text-xs font-semibold break-words text-slate-500">{{$user->email}}</div>
                         </div>
-                        <div class="flex flex-col items-center font-semibold text-2xl  ">
+                        <div class="flex flex-col items-center text-2xl font-semibold ">
                             <div>{{count($user->getWorkingActivities->where('status','!=',2))}} </div>
                             <div class="text-xs font-semibold text-orange-600">Working Activities</div>
                         </div>
@@ -41,7 +41,7 @@
 
 
         @if (auth()->user()->role != 0)
-        <div  class="w-full grid grid-cols-1 md:grid-cols-4 gap-3 bg-slate-600 p-3 rounded-md my-5">
+        <div  class="grid w-full grid-cols-1 gap-3 p-3 my-5 rounded-md md:grid-cols-4 bg-slate-600">
             @foreach ($users as $user)
                 <div class="flex flex-col items-center justify-between gap-1 text-slate-200 bg-slate-900 rounded-md py-1.5 px-2 cursor-pointer"
                 wire:click="filter('worker_id',{{$user->id}})">
@@ -49,11 +49,11 @@
                         <div class="text-xl font-semibold uppercase">{{$user->name}}</div>
                         <div class="text-xs text-slate-500">
                             <span class="">
-                                @if (auth()->user()->role==2)
+                                @if ($user->role==2)
                                     Super Admin
-                                @elseif (auth()->user()->role==1)
+                                @elseif ($user->role==1)
                                     Admin
-                                @elseif (auth()->user()->role==0)
+                                @elseif ($user->role==0)
                                     Normal User
                                 @endif
                             </span>
@@ -61,19 +61,19 @@
                         <div class="text-xs font-semibold text-slate-500">{{$user->email}}</div>
                     </div>
                     <div class="w-full h-0.5 bg-slate-600"></div>
-                    <div class="w-full flex justify-between">
+                    <div class="flex justify-between w-full">
 
-                        <div class="flex items-center gap-3 font-semibold text-xl bg-slate-800 rounded-md px-2 bg-emerald-800" >
+                        <div class="flex items-center gap-3 px-2 text-xl font-semibold rounded-md bg-slate-800 bg-emerald-800" >
                                 <div class="text-base">{{count($user->getWorkingActivities->where('status' ,'==',2))}} </div>
                                 <div class="text-xs text-slate-300">Complete</div>
                         </div>
 
-                        <div class="flex items-center gap-3 font-semibold text-xl  rounded-md px-2 bg-orange-800" >
+                        <div class="flex items-center gap-3 px-2 text-xl font-semibold bg-orange-800 rounded-md" >
                                 <div class="text-base">{{count($user->getWorkingActivities->where('status' ,'==',1))}} </div>
                                 <div class="text-xs text-slate-300">Working</div>
                         </div>
 
-                        <div class="flex items-center gap-3 font-semibold text-xl  rounded-md px-2 bg-slate-800" >
+                        <div class="flex items-center gap-3 px-2 text-xl font-semibold rounded-md bg-slate-800" >
                                 <div class="text-base">{{count($user->getWorkingActivities->where('status' ,'==',0))}} </div>
                                 <div class="text-xs text-slate-300">NotSeen</div>
                     </div>
@@ -98,13 +98,13 @@
 
                 <div class="my-5 ">
 
-                    <div class="flex flex-col md:flex-row justify-between gap-4">
+                    <div class="flex flex-col justify-between gap-4 md:flex-row">
 
 
 
                         <div class="flex items-center gap-3">
                             <div  class="flex flex-wrap items-center gap-3">
-                                <div class="flex flex-col items-center px-4 py-2 font-bold transition-all duration-200 cursor-pointer bg-slate-900 text-orange-600 rounded-md ">
+                                <div class="flex flex-col items-center px-4 py-2 font-bold text-orange-600 transition-all duration-200 rounded-md cursor-pointer bg-slate-900 ">
                                     <div class="text-sm font-normal">
                                         Total Activities
                                     </div>
@@ -114,22 +114,21 @@
                                         <span>{{$activitiesCount}}</span>
                                     </div>
                                 </div>
-                                <a wire:click="filter()" class="px-2 py-2 text-lg font-semibold transition-all duration-200 cursor-pointer bg-slate-300 text-slate-800 rounded-md hover:scale-95">
-                                    <i class="fas fa-code-fork text-2xl"></i>
+                                <a wire:click="filter()" class="px-2 py-2 text-lg font-semibold transition-all duration-200 rounded-md cursor-pointer bg-slate-300 text-slate-800 hover:scale-95">
+                                    <i class="text-2xl fas fa-code-fork"></i>
                                     <span>All</span>
                                 </a>
-                                <a @click="open=!open" class="px-2 py-2 text-lg font-semibold  transition-all duration-200 cursor-pointer bg-slate-300 text-slate-800 rounded-md hover:scale-95">
-                                    <i class=" text-2xl fas fa-filter rounded-xl "></i>
+                                <a @click="open=!open" class="px-2 py-2 text-lg font-semibold transition-all duration-200 rounded-md cursor-pointer bg-slate-300 text-slate-800 hover:scale-95">
+                                    <i class="text-2xl fas fa-filter rounded-xl"></i>
                                     <span> Filters</span>
                                 </a>
-                                <a class=" px-2 py-2 text-lg font-semibold transition-all duration-200 bg-slate-900 text-slate-300 rounded-md hover:scale-95 "
+                                <a class="px-2 py-2 text-lg font-semibold transition-all duration-200 rounded-md bg-slate-900 text-slate-300 hover:scale-95"
                                 href="{{route('activities.index')}}">
                                 <i class="text-2xl fas fa-refresh"></i>
                                 <span> Refresh</span>
                                </a>
                                <div class="relative">
-                                    <input type="text" name="search_text" wire:model="search_text" class="block pl-12 w-52 md:w-80 px-4 py-2  m-0 text-lg font-normal transition ease-in-out border-2
-                                     border-gray-800 border-solid form-control text-slate-300 bg-slate-900 bg-clip-padding rounded-md" placeholder="Activity ID , Task ID">
+                                    <input type="text" name="search_text" wire:model="search_text" class="block px-4 py-2 pl-12 m-0 text-lg font-normal transition ease-in-out border-2 border-gray-800 border-solid rounded-md w-52 md:w-80 form-control text-slate-300 bg-slate-900 bg-clip-padding" placeholder="Activity ID , Task ID">
                                     <i class="absolute px-2 text-2xl fas fa-search top-3 left-2 text-slate-400"></i>
                                 </div>
                             </div>
@@ -139,9 +138,9 @@
                         <div class="flex items-center gap-3">
 
                             <a href="{{route('activities.create')}}"
-                                class="flex items-center gap-2 px-4 py-2 text-lg font-bold transition-all duration-200 bg-slate-300 text-slate-900 rounded-md hover:scale-95 "
+                                class="flex items-center gap-2 px-4 py-2 text-lg font-bold transition-all duration-200 rounded-md bg-slate-300 text-slate-900 hover:scale-95 "
                                 >
-                                <i class="fas fa-plus text-2xl"></i>
+                                <i class="text-2xl fas fa-plus"></i>
                                 <span>Add New Activity</span>
                             </a>
                         </div>
@@ -257,20 +256,20 @@
                                     </td>
 
                                     <td class="px-2 py-4 text-sm text-gray-900">
-                                        <span class="w-20 px-3 py-2 text-slate-900 bg-slate-300 rounded-md text-center text-sm font-semibold block">
+                                        <span class="block w-20 px-3 py-2 text-sm font-semibold text-center rounded-md text-slate-900 bg-slate-300">
                                              #{{$item->getTask->id}}
                                         </span>
                                     </td>
 
                                     <td class="px-2 py-4 text-sm text-gray-900">
-                                        <span class="w-28 px-2 py-1 text-slate-900 bg-slate-300 rounded-md text-center text-xs font-semibold block">
+                                        <span class="block px-2 py-1 text-xs font-semibold text-center rounded-md w-28 text-slate-900 bg-slate-300">
                                              Activity : #{{$item->reply_id}}
                                         </span>
                                     </td>
 
 
                                     <td class="px-2 py-4 text-sm text-gray-900">
-                                        <span class="w-40 px-2 py-1 text-slate-900 bg-slate-300 rounded-md text-center text-xs block font-semibold ">
+                                        <span class="block w-40 px-2 py-1 text-xs font-semibold text-center rounded-md text-slate-900 bg-slate-300 ">
                                             {{Str::limit($item->description,15,"...")}}
                                         </span>
                                     </td>
@@ -279,28 +278,28 @@
 
                                     <td class="px-2 py-4 text-sm text-gray-900 ">
 
-                                        <div class="flex flex-col gap-1 items-center">
+                                        <div class="flex flex-col items-center gap-1">
 
 {{--
 
-                                                    <span class="max-w-max flex items-center gap-1  py-1 px-2 rounded-md text-xs bg-slate-300">
-                                                        <i class="fa-solid fa-right-from-bracket text-sm"></i>
+                                                    <span class="flex items-center gap-1 px-2 py-1 text-xs rounded-md max-w-max bg-slate-300">
+                                                        <i class="text-sm fa-solid fa-right-from-bracket"></i>
                                                         <span class="font-semibold">{{$item->getSender->name}}</span>
                                                     </span> --}}
-                                                    <span class="max-w-max flex items-center gap-1  py-1 px-2 rounded-md text-xs bg-slate-900 text-slate-200">
+                                                    <span class="flex items-center gap-1 px-2 py-1 text-xs rounded-md max-w-max bg-slate-900 text-slate-200">
                                                         <i class="fa-solid fa-right-from-bracket"></i>
                                                         <span>Send By : </span>
                                                         <span class="font-semibold">{{$item->getSender->name}}</span>
                                                     </span>
 
-                                                    <span class="max-w-max flex items-center gap-1  py-1 px-2 rounded-md text-xs bg-orange-700 text-slate-200">
+                                                    <span class="flex items-center gap-1 px-2 py-1 text-xs bg-orange-700 rounded-md max-w-max text-slate-200">
                                                         <i class="fa-solid fa-running"></i>
                                                         <span>Worker : </span>
                                                         <span class="font-semibold">{{$item->getWorker->name}}</span>
                                                     </span>
 
-                                                    {{-- <span class="max-w-max flex items-center gap-1  py-1 px-2 rounded-md text-xs bg-slate-300">
-                                                        <i class="fa-solid fa-running text-sm"></i>
+                                                    {{-- <span class="flex items-center gap-1 px-2 py-1 text-xs rounded-md max-w-max bg-slate-300">
+                                                        <i class="text-sm fa-solid fa-running"></i>
                                                         <span class="font-semibold">{{$item->getWorker->name}}</span>
                                                     </span> --}}
 
@@ -314,8 +313,8 @@
 
 
                                     <td class="px-2 py-4 text-sm text-gray-900 ">
-                                        <span  class="flex justify-center items-center gap-2 px-2 py-1 text-slate-200 bg-slate-900 rounded-md text-center font-semibold text-xs">
-                                            {{-- <i class="fa-solid fa-arrows-rotate text-base"></i> --}}
+                                        <span  class="flex items-center justify-center gap-2 px-2 py-1 text-xs font-semibold text-center rounded-md text-slate-200 bg-slate-900">
+                                            {{-- <i class="text-base fa-solid fa-arrows-rotate"></i> --}}
                                             {{$item->created_at}}
                                         </span>
                                     </td>
@@ -327,34 +326,34 @@
 
 
                                     <td class="px-2 py-2 text-xs text-gray-200">
-                                        <div class=" flex items-centert justify-end gap-2">
+                                        <div class="flex justify-end gap-2 items-centert">
 
-                                            <div class="bg-slate-300 w-1 rounded"></div>
+                                            <div class="w-1 rounded bg-slate-300"></div>
 
 
-                                            <div class="flex flex-col items-center justify-center  gap-2">
+                                            <div class="flex flex-col items-center justify-center gap-2">
 
                                                 @if ($item->status==2)
-                                                    <a class="flex items-center gap-1 bg-emerald-800 text-slate-200 py-1 px-2 rounded-md">
+                                                    <a class="flex items-center gap-1 px-2 py-1 rounded-md bg-emerald-800 text-slate-200">
                                                         <i class="text-xl fa-solid fa-circle-check"></i>
                                                         <div class="text-xs">Complete</div>
                                                     </a>
                                                 @elseif ($item->status==1)
-                                                    <a class="flex items-center gap-1 text-xl bg-orange-600 text-slate-300 py-1 px-2 rounded-md">
-                                                        <i class=" text-xl fa-solid fa-person-digging"></i>
+                                                    <a class="flex items-center gap-1 px-2 py-1 text-xl bg-orange-600 rounded-md text-slate-300">
+                                                        <i class="text-xl fa-solid fa-person-digging"></i>
                                                         <div class="text-xs font-semibold">Working</div>
                                                     </a>
                                                 @elseif ($item->status==0)
-                                                    <a class="flex items-center gap-1 text-xl bg-gray-900 text-slate-300 py-1 px-2 rounded-md">
-                                                        <i class=" text-lg fa-solid fa-circle-minus"></i>
-                                                        <div class="text-xs  font-semibold">Not Seen</div>
+                                                    <a class="flex items-center gap-1 px-2 py-1 text-xl bg-gray-900 rounded-md text-slate-300">
+                                                        <i class="text-lg fa-solid fa-circle-minus"></i>
+                                                        <div class="text-xs font-semibold">Not Seen</div>
                                                     </a>
                                                 @endif
                                             </div>
 
 
 
-                                            <div class="bg-slate-300 w-1 rounded"></div>
+                                            <div class="w-1 rounded bg-slate-300"></div>
 
 
 
@@ -366,20 +365,20 @@
                                             grid-cols-2
                                             @endif
                                             ">
-                                                <a class="flex items-center justify-center gap-1 text-xl p-2 transition bg-slate-900 rounded-md text-slate-100  hover:scale-95"
+                                                <a class="flex items-center justify-center gap-1 p-2 text-xl transition rounded-md bg-slate-900 text-slate-100 hover:scale-95"
                                                 href="{{route('activities.show',$item)}}">
-                                                    <i class=" text-xl fa-solid fa-eye "></i>
+                                                    <i class="text-xl fa-solid fa-eye"></i>
                                                     <div class="text-sm">Show</div>
                                                 </a>
-                                                {{-- <a class="flex items-center gap-1 text-xl p-2 transition bg-orange-700 rounded-md text-slate-100  hover:scale-95"
+                                                {{-- <a class="flex items-center gap-1 p-2 text-xl transition bg-orange-700 rounded-md text-slate-100 hover:scale-95"
                                                 href="{{route('activities.edit',$item)}}">
-                                                    <i class=" text-xl fa-solid fa-pen-to-square"></i>
+                                                    <i class="text-xl fa-solid fa-pen-to-square"></i>
                                                     <div class="text-sm">Update</div>
                                                 </a> --}}
 
                                                 @if ($item->status != 2 && $item->worker_id==auth()->id())
                                                 <a href="{{route('activities.reply',$item)}}"
-                                                    class="w-full flex items-center justify-center gap-1 text-slate-100 bg-blue-900 p-2 rounded-md transition hover:scale-95">
+                                                    class="flex items-center justify-center w-full gap-1 p-2 transition bg-blue-900 rounded-md text-slate-100 hover:scale-95">
                                                     <i class="text-xl fa-solid fa-reply"></i>
                                                     <div class="text-sm"> Reply</div>
                                                 </a>
@@ -387,14 +386,42 @@
 
 
                                                 @if (Auth::user()->role!=0)
-                                                    <form action="{{route('activities.delete',$item)}}" method="post">
+                                                    {{-- <form action="{{route('activities.delete',$item)}}" method="post">
                                                         @csrf
                                                         @method('delete')
-                                                        <button type="submit" class="w-full flex items-center gap-1 text-xl p-2 transition bg-red-900 rounded-md text-slate-100 hover:scale-95">
-                                                            <i class=" text-xl fa-solid fa-trash-can"></i>
+                                                        <button type="submit" class="flex items-center w-full gap-1 p-2 text-xl transition bg-red-900 rounded-md text-slate-100 hover:scale-95">
+                                                            <i class="text-xl fa-solid fa-trash-can"></i>
                                                             <div class="text-sm">Delete</div>
                                                         </button>
-                                                    </form>
+                                                    </form> --}}
+                                                    <div x-data="{modal:false}">
+                                                        <a @click="modal=true"
+                                                          class="flex items-center w-full gap-1 p-2 text-xl transition bg-red-900 rounded-md cursor-pointer text-slate-100 hover:scale-95">
+                                                            <i class="text-base fa-solid fa-trash-can"></i>
+                                                            <div class="text-sm">Delete</div>
+                                                        </a>
+                                                        <div x-show="modal"  class="absolute top-0 left-0 flex items-center justify-center w-full h-full bg-gray-900/80">
+                                                            <div class="p-2 bg-white rounded-md" @click.away="modal = false">
+                                                                <div class="p-2 text-lg font-bold text-slate-900">Are You Sure To Delete ?</div>
+                                                                <div class="flex justify-center gap-8">
+                                                                    <form action="{{route('activities.delete',$item)}}" method="post">
+                                                                        @csrf
+                                                                        @method('delete')
+                                                                        <button type="submit"
+                                                                        class="flex items-center w-full gap-1 px-4 py-2 text-xl transition bg-red-900 rounded-md text-slate-100 hover:scale-95">
+                                                                            {{-- <i class="text-base fa-solid fa-trash-can"></i> --}}
+                                                                            <div class="text-sm">yes</div>
+                                                                        </button>
+                                                                    </form>
+                                                                    <a @click="modal=false"
+                                                                        class="flex items-center gap-1 px-4 py-2 text-xl transition bg-red-900 rounded-md cursor-pointer text-slate-100 hover:scale-95">
+                                                                            {{-- <i class="text-base fa-solid fa-trash-can"></i> --}}
+                                                                            <div class="text-sm">No</div>
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 @endif
 
 
@@ -415,8 +442,8 @@
 
 
                           @if ($activitylist->total()>$perPage)
-                          <div class="flex items-center justify-center w-full gap-3 my-3 p-3">
-                              <div wire:click="showMore()" class=" flex items-center cursor-pointer justify-center gap-1 px-6 py-2 text-xl font-medium text-white bg-orange-600 rounded-xl shadow-md hover:bg-orange-700 hover:shadow-lg ">
+                          <div class="flex items-center justify-center w-full gap-3 p-3 my-3">
+                              <div wire:click="showMore()" class="flex items-center justify-center gap-1 px-6 py-2 text-xl font-medium text-white bg-orange-600 shadow-md cursor-pointer rounded-xl hover:bg-orange-700 hover:shadow-lg">
                                   <div>
                                       Show More
                                   </div>

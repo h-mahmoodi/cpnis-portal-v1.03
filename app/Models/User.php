@@ -70,4 +70,8 @@ class User extends Authenticatable
         return $this->hasMany(Team::class,'user_id','id');
     }
 
+    public function getReciveMessages(){
+        return $this->hasMany(Message::class,'to','id');
+    }
+
 }

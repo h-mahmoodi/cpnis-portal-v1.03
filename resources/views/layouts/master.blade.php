@@ -111,6 +111,7 @@
 
 @if (auth()->user())
     <div class="">
+
         @include('layouts.header')
     </div>
 @endif
